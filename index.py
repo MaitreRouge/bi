@@ -16,8 +16,8 @@ def binToDeci(n):
     n = list(str(n)) #Découpe le str donné en param en list pour traiter chaque bit induviduellement
     l = len(n)       #Permet de connaitre le nombre de bits total
     r = int(0)       #Variable stockant le résultat, incrémenté à chaque bit positif dans la boucle suivante
-    for n in range(l):
-        r += int(i[n]) * (2**(l-n-1))
+    for a in range(l):
+        r += int(i[a]) * (2**(l-a-1))
         # La formule de calcul suivante est un peu complexe et je vais me mettre un commentaire pour ne pas oublier comment elle fonctionne
         # En premier on chercher sur quel bit on travaille (i[n])
         # Étant donné que i[n] est sous la forme d'un STR au début, je le transforme en INT en assumant que l'utilisateur final n'est pas casse couile et ne va pasmettre une lettre
@@ -41,3 +41,27 @@ def deciToHexa(n):
         else: reply = str(lettres[m-10]) + reply
         n = n // 16
     return reply
+
+# La fonction hexaToDeci prends un seul param, un str N sous forme d'un hexadécimal sans préfixe (0x)
+# Elle en renvoie l'équivalent en décimal sous forme d'un int
+
+def hexaToDeci(n):
+    lettres = ["A", "B", "C", "D", "E", "F"]
+    n = list(str(n))
+    l = len(n)
+    r = int(0)
+    for a in range(l):
+        value = n[a]
+        if(value in lettres):
+            switcher={
+                "A":10,
+                "B":11,
+                "C":12,
+                "D":13,
+                "E":14,
+                "F":15
+            }
+            value = switcher.get(value)
+        print(value)
+        r += int(value) * (16**(l-a-1))
+    return r
