@@ -1,7 +1,5 @@
-"""
-La fonction deciToHexa prends un seul param, un int N positif
-Elle en renvéra l'équivalent en bi,aire sous forme d'un str
-"""
+# La fonction deciToBin prends un seul param, un int N positif
+# Elle en renvéra l'équivalent en bi,aire sous forme d'un str
 
 def deciToBin(n):
     reply = ""
@@ -11,17 +9,22 @@ def deciToBin(n):
     return "0" + reply
 
 
-"""La fonction binToDeci prends un seul param, un str N sous forme d'un binaire sans préfixe (0b)
-Elle en renvéra l'équivalent en décimal sous forme d'un int"""
+# La fonction binToDeci prends un seul param, un str N sous forme d'un binaire sans préfixe (0b)
+# Elle en renvéra l'équivalent en décimal sous forme d'un int
 
 def binToDeci(n):
-    reply = int()
-    nbr = str(n)
-    nbr_len = len(nbr) - 1
-    while(nbr.find("1") != -1):
-        yolo = nbr.find("1")
-        print(nbr_len - yolo)
-        reply = 2 ** (nbr_len - yolo) + reply
-        old = "0" * yolo
-        nbr = nbr.replace(old+'1', '0')
-    return(reply)
+    n = list(str(n)) #Découpe le str donné en param en list pour traiter chaque bit induviduellement
+    l = len(n)       #Permet de connaitre le nombre de bits total
+    r = int(0)       #Variable stockant le résultat, incrémenté à chaque bit positif dans la boucle suivante
+    for n in range(l):
+        r += int(i[n])*(2**(l-n-1))
+        # La formule de calcul suivante est un peu complexe et je vais me mettre un commentaire pour ne pas oublier comment elle fonctionne
+        # En premier on chercher sur quel bit on travaille (i[n])
+        # Étant donné que i[n] est sous la forme d'un STR au début, je le transforme en INT en assumant que l'utilisateur final n'est pas casse couile et ne va pasmettre une lettre
+        # Puis je le multiplie i[n] par 2 puissance X
+        # X est très important car pour le premier bit il doit être de 0
+        # Car 1*(2^0) = 1*1 = 1 tandis que dans le 2eme bit ca doit être 1*2 puis dans le 3eme 2*4...
+        # Pour trouver X je fais donc longueur totale (disons 6) - valeur actuelle (disons qu'on traite le 2eme bit donc c'est la 5ème répétition de la boucle) ce qui fait 2
+        # Sauf que 2^2 = 4 alors que le 2eme bit doit être égal à 2^1 donc on fait au calcul valeur totale - valeur actuelle ce qui fait 2^1
+        # Cette partie peut être optimisé mais F*** j'ai pas envie, peut-être plus tard :D
+    return r
