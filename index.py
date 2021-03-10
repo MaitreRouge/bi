@@ -17,7 +17,7 @@ def binToDeci(n):
     l = len(n)       #Permet de connaitre le nombre de bits total
     r = int(0)       #Variable stockant le résultat, incrémenté à chaque bit positif dans la boucle suivante
     for a in range(l):
-        r += int(i[a]) * (2**(l-a-1))
+        r += int(n[a]) * (2**(l-a-1))
         # La formule de calcul suivante est un peu complexe et je vais me mettre un commentaire pour ne pas oublier comment elle fonctionne
         # En premier on chercher sur quel bit on travaille (i[n])
         # Étant donné que i[n] est sous la forme d'un STR au début, je le transforme en INT en assumant que l'utilisateur final n'est pas casse couile et ne va pasmettre une lettre
